@@ -1,0 +1,53 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+        No permissions are declared, on purpose.
+
+        The Storage Access Framework grants access to the documents the user
+        picks, through a URI permission on the result Intent. Declaring
+        READ_EXTERNAL_STORAGE, READ_MEDIA_* or MANAGE_EXTERNAL_STORAGE would ask
+        the user for broad storage access this plugin does not need and must not
+        have. An app that depends on this plugin inherits no permission from it.
+    -->
+
+    <application>
+        <!--
+            The transparent activity that runs the ACTION_OPEN_DOCUMENT round
+            trip. DartNative exposes no Activity-result hook, so the plugin owns
+            this one; see FilePickerProxyActivity for the full rationale.
+
+            exported=false        only this plugin starts it.
+            Translucent theme     the user never sees it, only the system picker.
+            configChanges         a rotation while the picker is up must not
+                                  recreate the proxy and relaunch the picker.
+
+            NOTE on taskAffinity: this activity deliberately keeps the app's
+            DEFAULT task affinity. It must NOT declare android:taskAffinity=""
+            (it did, and that was a bug found on device: the NEW_TASK launch
+            landed in a task of its own, so finishing the proxy tore down a task
+            that was not the user's and returned them to the wrong place).
+
+            Task affinity is NOT what makes a picked document readable
+            afterwards, and an earlier version of this comment claimed it was.
+            Measured on device (finding F9, physical Galaxy S23 Ultra, Android
+            16): the transient URI permission that ACTION_OPEN_DOCUMENT returns
+            is owned by the ACTIVITY that received the result, not by its task,
+            and AOSP revokes it when that activity leaves the history stack
+            (ActivityRecord.removeFromHistory -> removeUriPermissionsLocked).
+            This proxy finishes the moment it has the result, so the transient
+            grant is gone milliseconds later and no task arrangement saves it.
+
+            Durability therefore comes from somewhere else: reference mode takes
+            a READ-ONLY persistable URI grant while the proxy still holds the
+            transient one, and SessionGrants owns the lifetime of every grant
+            the caller did not ask to persist, releasing it at the next process
+            start and on engine detach. See SessionGrants.kt for the full
+            argument and the alternatives that were rejected.
+        -->
+        <activity
+            android:name="com.dartnative.file_picker.FilePickerProxyActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="false"
+            android:noHistory="false"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|uiMode" />
+    </application>
+</manifest>

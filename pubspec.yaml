@@ -1,0 +1,56 @@
+name: dartnative_file_picker
+description: >
+  Native document picker for DartNative apps (iOS + Android). Wraps
+  UIDocumentPickerViewController and the Android Storage Access Framework
+  (ACTION_OPEN_DOCUMENT) over FFI — no Flutter platform channels.
+version: 0.1.0
+publish_to: 'none'
+
+repository: https://github.com/batustun/dartnative_file_picker
+issue_tracker: https://github.com/batustun/dartnative_file_picker/issues
+
+environment:
+  sdk: ^3.9.0-0
+
+dependencies:
+  dartnative: ^1.0.0
+  ffi: ^2.1.0
+  # Extension to MIME-type resolution for the Android filter. Pure Dart,
+  # BSD-3-Clause, published by the Dart team (tools.dart.dev), no transitive
+  # dependencies and no Flutter. Used instead of shipping a large hand-written
+  # table of our own; see lib/src/filters/mime_types.dart for the handful of
+  # documented overrides on top of it.
+  mime: ^2.0.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0
+
+# dartnative plugin manifest — consumed by the SDK's injectPlugins pass on
+# every `dn pub get`.
+#
+# ios.ffiPlugin: true   → the pod's @_cdecl symbols link into the app binary,
+#                         so Dart resolves them via DynamicLibrary.process().
+# android.package +      → emits the FlutterPlugin instantiation in the
+# android.pluginClass      generated registrant. That call site is the ONLY
+#                          one that fires JNI_OnLoad for our .so. Never
+#                          `ffiPlugin: true` on Android: it bundles the .so
+#                          without any System.loadLibrary, so JNI_OnLoad never
+#                          runs and the first JNI callback dies with SIGSEGV
+#                          in _JavaVM::GetEnv.
+dartnative:
+  plugin:
+    platforms:
+      ios:
+        ffiPlugin: true
+      android:
+        package: com.dartnative.file_picker
+        pluginClass: DartNativeFilePickerPlugin
+  # The registrant generator discovers this block through
+  # .dart_tool/package_config.json and emits the import + call into the app's
+  # lib/dartnative_plugin_registrant.dart, which registerAll() runs.
+  registrant:
+    imports:
+      - package:dartnative_file_picker/dartnative_file_picker.dart
+    calls:
+      - FilePickerFFIBindings.loadSymbols();

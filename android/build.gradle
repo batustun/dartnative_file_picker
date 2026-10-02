@@ -1,0 +1,72 @@
+// dartnative_file_picker Android library module.
+// Mirrors the iOS surface in ios/Classes/DNFilePickerBridge.swift.
+
+group 'com.dartnative.file_picker'
+version '0.1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.11.1'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    // NDK r28+ aligns LOAD segments to 16 KB, which Google Play requires for
+    // Android 15 and later.
+    ndkVersion = "28.2.13676358"
+    namespace 'com.dartnative.file_picker'
+    compileSdkVersion 36
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // 26 is what `dn plugin build` compiles this module at, and the
+        // framework requires it of any DartNative app. The Storage Access
+        // Framework APIs used here are older than that, so nothing needs a
+        // version guard.
+        minSdkVersion 26
+        // 64-bit only, matching the framework's own Android library and what
+        // `dn` builds by default: a 32-bit copy of this plugin's library would
+        // never be loaded, only carried.
+        ndk {
+            abiFilters 'arm64-v8a', 'x86_64'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+}
+
+dependencies {
+    // androidx.annotation supplies @Keep, which stops R8 from stripping the
+    // top-level functions JNI resolves by name.
+    implementation 'androidx.annotation:annotation:1.7.1'
+    // Deliberately NO `compileOnly project(':dartnative_android')`: the
+    // framework docs state a plugin with that dependency cannot produce its own
+    // publishable Android archive. This plugin has no view, takes its Context
+    // from the FlutterPluginBinding, and resolves DN_IsolateGen() with dlsym at
+    // runtime. See doc/plugin-pattern-findings.md.
+}

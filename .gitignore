@@ -1,0 +1,32 @@
+# Dart / DartNative
+.dart_tool/
+.packages
+pubspec.lock
+dn_plugins.lock
+build/
+dist/
+doc/api/
+
+# Plugin artifacts produced by `dn plugin build`
+*.xcframework
+*.aar
+
+# iOS / CocoaPods
+ios/Pods/
+ios/Podfile.lock
+ios/.symlinks/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Android / Gradle
+android/.gradle/
+android/local.properties
+android/.cxx/
+.gradle/
+local.properties
+
+# Editors / OS
+.idea/
+*.iml
+.DS_Store
