@@ -259,7 +259,7 @@ abstract final class FilePicker {
     throw FilePickerException(
       FilePickerErrorCode.copyFailed,
       'The native side returned "${file.name}" without a path despite '
-      'accessMode: copyToCache. This is a bug in dartnative_file_picker; '
+      'accessMode: copyToCache. This is a bug in file_picker; '
       'please report it with the platform and OS version.',
     );
   }

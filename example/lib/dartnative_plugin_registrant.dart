@@ -13,14 +13,14 @@
 // overwriting it.
 //
 // Plugins loaded:
-//   • dartnative_file_picker
+//   • file_picker
 
 import 'dart:io' show Platform;
 
 import 'package:dartnative/dartnative.dart';
 import 'package:dartnative_ios/dartnative_ios.dart';
 import 'package:dartnative_android/dartnative_android.dart';
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 
 abstract final class DartNativePluginRegistrant {
   /// Registers the platform bindings and loads every DartNative plugin's
@@ -39,14 +39,14 @@ abstract final class DartNativePluginRegistrant {
       DartNativeLicense.instance.noteTrialEnded();
     }
     DartNativeLicense.instance.reportPluginUsage(const <String>[
-      'dartnative_file_picker',
+      'file_picker',
     ]);
     registerNativeBindings(
       Platform.isAndroid
           ? AndroidNativeBindings.instance
           : IOSNativeBindings.instance,
     );
-    _load('dartnative_file_picker', () {
+    _load('file_picker', () {
       FilePickerFFIBindings.loadSymbols();
     });
   }

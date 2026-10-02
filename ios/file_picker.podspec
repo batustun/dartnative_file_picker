@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = 'dartnative_file_picker'
+  s.name             = 'file_picker'
   s.version          = '0.1.0'
   s.summary          = 'Native document picker for DartNative (UIDocumentPickerViewController).'
   s.description      = <<-DESC

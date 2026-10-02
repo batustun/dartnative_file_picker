@@ -1,4 +1,4 @@
-/// dartnative_file_picker example.
+/// file_picker example.
 ///
 /// Exercises every public API against the real system picker, so this app is
 /// also the manual verification harness:
@@ -21,7 +21,7 @@ library;
 import 'dart:io';
 
 import 'package:dartnative/dartnative.dart';
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 
 import 'dartnative_plugin_registrant.dart';
 
@@ -569,7 +569,7 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
     return Scaffold(
       brightness: Brightness.light,
       backgroundColor: const Color(0xFFFFFFFF),
-      appBar: AppBar(title: const Text('dartnative_file_picker')),
+      appBar: AppBar(title: const Text('file_picker')),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [

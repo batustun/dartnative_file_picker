@@ -122,7 +122,7 @@ so a package cannot correct those fields.
 
 **This package is MIT licensed and authored by Batuhan Ustun.** The authoritative
 statements are the `LICENSE` file shipped in the archive, this package's own
-`ios/dartnative_file_picker.podspec`, and the README. The generated pod's
+`ios/file_picker.podspec`, and the README. The generated pod's
 `license` and `author` fields describe the DartNative distribution template, not
 the ownership or licensing of this package, and are known to be wrong for
 community plugins. See `doc/upstream/dartnative-podspec-metadata.md`.

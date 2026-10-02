@@ -1,4 +1,4 @@
-# Static analysis for dartnative_file_picker.
+# Static analysis for file_picker.
 #
 # Run with `dn analyze` (the DartNative CLI), which treats infos and warnings
 # as fatal by default — keep this file clean rather than suppressing findings.

@@ -1,4 +1,4 @@
-name: dartnative_file_picker
+name: file_picker
 description: >
   Native document picker for DartNative apps (iOS + Android). Wraps
   UIDocumentPickerViewController and the Android Storage Access Framework
@@ -51,6 +51,6 @@ dartnative:
   # lib/dartnative_plugin_registrant.dart, which registerAll() runs.
   registrant:
     imports:
-      - package:dartnative_file_picker/dartnative_file_picker.dart
+      - package:file_picker/file_picker.dart
     calls:
       - FilePickerFFIBindings.loadSymbols();

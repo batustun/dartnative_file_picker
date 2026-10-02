@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
-import 'package:dartnative_file_picker/src/native/native_codec.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/src/native/native_codec.dart';
 import 'package:test/test.dart';
 
 String envelope(Object? value) => jsonEncode(value);

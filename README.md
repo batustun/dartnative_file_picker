@@ -1,4 +1,4 @@
-# dartnative_file_picker
+# file_picker
 
 The native document picker for DartNative apps. It presents the operating
 system's own document browser over FFI: **`UIDocumentPickerViewController`** on
@@ -55,7 +55,7 @@ print('${file.name} · ${file.uri}');      // path is often null, uri never is
 
 ```yaml
 dependencies:
-  dartnative_file_picker: ^0.1.0   # from dartpub.dev
+  file_picker: ^0.1.0   # from dartpub.dev
 ```
 
 ```bash
@@ -78,7 +78,7 @@ or your manifest.
 ## Pick one document
 
 ```dart
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 
 final PlatformFile? file = await FilePicker.pickFile();
 if (file == null) {

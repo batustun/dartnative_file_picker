@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
-import 'package:dartnative_file_picker/src/native/resource_gateway.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/src/native/resource_gateway.dart';
 import 'package:test/test.dart';
 
 /// A gateway that records calls and serves canned bytes.

@@ -1,4 +1,4 @@
-/// FFI bindings for the dartnative_file_picker native layer (iOS + Android).
+/// FFI bindings for the file_picker native layer (iOS + Android).
 ///
 /// On iOS the `@_cdecl` symbols are linked into the app binary by CocoaPods, so
 /// they resolve through `DynamicLibrary.process()`. On Android the JNI bridge
@@ -247,7 +247,7 @@ final class FilePickerFFIBindings implements FileResourceGateway {
     if (_loaded) return;
     throw const FilePickerException(
       FilePickerErrorCode.nativeFailure,
-      'dartnative_file_picker is not initialized. Call '
+      'file_picker is not initialized. Call '
       'DartNativePluginRegistrant.registerAll() as the first line of main(), '
       'and run `dn pub get` after adding the dependency so the registrant is '
       'regenerated.',

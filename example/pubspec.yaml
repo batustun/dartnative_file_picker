@@ -1,5 +1,5 @@
 name: dartnative_file_picker_example
-description: "Demonstrates how to use the dartnative_file_picker plugin."
+description: "Demonstrates how to use the file_picker plugin."
 publish_to: 'none'
 version: 0.1.0+1
 
@@ -13,7 +13,7 @@ dependencies:
   dartnative_ios: ^1.0.0
   dartnative_android: ^1.0.0
   # The plugin this app demonstrates, from the directory above.
-  dartnative_file_picker:
+  file_picker:
     path: ../
   # Skia GPU canvas: SkSL runtime shaders and rich shaped text. Adds about
   # 9 MB to an iPhone app; on Android the library is already in the platform

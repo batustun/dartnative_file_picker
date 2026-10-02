@@ -1,4 +1,4 @@
-import 'package:dartnative_file_picker/src/filters/mime_types.dart';
+import 'package:file_picker/src/filters/mime_types.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,5 +1,5 @@
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
-import 'package:dartnative_file_picker/src/filters/extension_filter.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/src/filters/extension_filter.dart';
 import 'package:test/test.dart';
 
 /// Matches a [FilePickerException] carrying [code].

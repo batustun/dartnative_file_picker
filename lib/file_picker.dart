@@ -1,4 +1,4 @@
-/// dartnative_file_picker — the native document picker for DartNative apps.
+/// file_picker — the native document picker for DartNative apps.
 ///
 /// Presents the operating system's own document browser over FFI:
 /// `UIDocumentPickerViewController` on iOS, `Intent.ACTION_OPEN_DOCUMENT` (the
@@ -7,7 +7,7 @@
 /// not have one.
 ///
 /// ```dart
-/// import 'package:dartnative_file_picker/dartnative_file_picker.dart';
+/// import 'package:file_picker/file_picker.dart';
 ///
 /// final file = await FilePicker.pickFile(
 ///   type: FileType.custom,

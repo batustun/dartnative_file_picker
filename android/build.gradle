@@ -1,4 +1,4 @@
-// dartnative_file_picker Android library module.
+// file_picker Android library module.
 // Mirrors the iOS surface in ios/Classes/DNFilePickerBridge.swift.
 
 group 'com.dartnative.file_picker'

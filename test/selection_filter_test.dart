@@ -1,5 +1,5 @@
-import 'package:dartnative_file_picker/src/filters/selection_filter.dart';
-import 'package:dartnative_file_picker/src/native/native_codec.dart';
+import 'package:file_picker/src/filters/selection_filter.dart';
+import 'package:file_picker/src/native/native_codec.dart';
 import 'package:test/test.dart';
 
 NativeFileRecord record(String name) => NativeFileRecord(

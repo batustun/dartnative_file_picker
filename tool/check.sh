@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# The local quality gate for dartnative_file_picker.
+# The local quality gate for file_picker.
 #
 # There is no CI on this repository by design, so this script is the gate. It
 # stops at the first failure and never hides a command's output: a failure you
@@ -56,7 +56,7 @@ step() {
 TOTAL=5
 [ "$FAST" -eq 0 ] && TOTAL=7
 
-echo "dartnative_file_picker — local quality gate"
+echo "file_picker — local quality gate"
 dn --version | head -1
 
 # ── 1. Formatting ─────────────────────────────────────────────────────────────

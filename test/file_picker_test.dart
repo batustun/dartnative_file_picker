@@ -1,4 +1,4 @@
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:test/test.dart';
 
 /// Tests the behaviour that happens *before* and *around* the native call.

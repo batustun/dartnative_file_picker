@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:dartnative_file_picker/dartnative_file_picker.dart';
-import 'package:dartnative_file_picker/src/native/picker_request.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/src/native/picker_request.dart';
 import 'package:test/test.dart';
 
 Map<String, Object?> decoded(PickerRequest request) =>
